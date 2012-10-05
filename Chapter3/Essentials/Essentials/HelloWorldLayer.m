@@ -12,50 +12,76 @@
 
 @implementation HelloWorldLayer
 
-// Helper class method that creates a Scene with the HelloWorldLayer as the only child.
-+(CCScene *) scene
++ (CCScene *) scene
 {
-	// 'scene' is an autorelease object.
 	CCScene *scene = [CCScene node];
-	
-	// 'layer' is an autorelease object.
 	HelloWorldLayer *layer = [HelloWorldLayer node];
-	
-	// add layer as a child to scene
 	[scene addChild: layer];
-	
-	// return the scene
 	return scene;
 }
 
-// on "init" you need to initialize your instance
--(id) init
+- (id) init
 {
-	// always call "super" init
-	// Apple recommends to re-assign "self" with the "super's" return value
-	if( (self=[super init]) ) {
-        CCLOG(@"%@: %@", NSStringFromSelector(_cmd), self);
+	if( (self=[super init]) )
+    {
+        self.isTouchEnabled = YES;
+        self.isAccelerometerEnabled = YES;
 	}
+    
 	return self;
 }
 
-- (void)onEnter
+- (void) dealloc
+{
+    CCLOG(@"%@: %@", NSStringFromSelector(_cmd), self);    
+	[super dealloc];
+}
+
+- (void) onEnter
 {
     [super onEnter];
     
-    [[CCDirector sharedDirector] replaceScene:[MenuLayer scene]];
+    // winSize should be called in init function, or it is not lanscape size
+    CGSize size = [[CCDirector sharedDirector] winSize];
+    
+    // load the backgoroud sprite
+    CCSprite *background = [CCSprite spriteWithFile:@"Default.png"];
+    background.position = CGPointMake(size.width / 2.0, size.height / 2.0);
+    background.scaleX = 3;
+    background.scaleY = 30;
+    [self addChild:background];
+    
+    // text label
+    CCLabelTTF *label = [CCLabelTTF labelWithString:@"Hello Cocos2D" fontName:@"AppleGothic" fontSize:64];
+    label.opacity = 160;
+    label.position = CGPointMake(size.width / 2.0, size.height / 2.0);
+    [self addChild:label];
+    
+    // touch label
+    CCLabelTTF *touchLabel = [CCLabelTTF labelWithString:@"Touch the screen" fontName:@"AppleGothic" fontSize:32];
+    touchLabel.position = CGPointMake(size.width / 2.0, size.height / 2.0 - 60);
+    [self addChild:touchLabel];
 }
 
-// on "dealloc" you need to release all your retained objects
-- (void) dealloc
+#pragma mark Touch Delegate Methods
+- (void) ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-	// in case you have something to dealloc, do it in this method
-	// in this particular example nothing needs to be released.
-	// cocos2d will automatically release all the children (Label)
-	
-	// don't forget to call "super dealloc"
-    CCLOG(@"%@: %@", NSStringFromSelector(_cmd), self);
-	[super dealloc];
+    
+}
+
+- (void) ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    CCLOG(@"%@ - %@", NSStringFromSelector(_cmd), self);
+    
+    CCScene *menuScene = [MenuLayer scene];
+    CCTransitionScene *tran = [CCTransitionRotoZoom transitionWithDuration:1 scene:menuScene];
+    [[CCDirector sharedDirector] replaceScene:tran];
+}
+
+#pragma mark Accelerate Delegate Methods
+- (void) accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration
+{
+    
 }
 
 @end

@@ -10,6 +10,6 @@
 
 @interface MenuLayer : CCLayer
 
-+ (CCScene *)scene;
++ (CCScene *) scene;
 
 @end
