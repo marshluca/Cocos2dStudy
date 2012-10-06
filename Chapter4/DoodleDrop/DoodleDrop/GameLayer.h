@@ -9,6 +9,18 @@
 #import "cocos2d.h"
 
 @interface GameLayer : CCLayer
+{
+    CCSprite *player;
+    CGPoint playerVelocity;
+    
+    CCArray *spiders;
+    float spiderMoveDuration;
+    int numbersOfSpiderMoved;
+    
+    ccTime totoalTime;
+    int score;
+    CCLabelBMFont *scoreLabel;
+}
 
 + (CCScene *) scene;
 

@@ -132,6 +132,13 @@
 		3261B60E16206B4400AC53E1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3261B60D16206B4400AC53E1 /* main.m */; };
 		3261B61116206B4400AC53E1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3261B61016206B4400AC53E1 /* AppDelegate.m */; };
 		3261B62216206BA800AC53E1 /* GameLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3261B62116206BA800AC53E1 /* GameLayer.m */; };
+		3261B62A1620709300AC53E1 /* alien-sfx.caf in Resources */ = {isa = PBXBuildFile; fileRef = 3261B6231620709200AC53E1 /* alien-sfx.caf */; };
+		3261B62B1620709300AC53E1 /* alien.png in Resources */ = {isa = PBXBuildFile; fileRef = 3261B6241620709300AC53E1 /* alien.png */; };
+		3261B62C1620709300AC53E1 /* bitmapfont.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 3261B6251620709300AC53E1 /* bitmapfont.fnt */; };
+		3261B62D1620709300AC53E1 /* bitmapfont.hiero in Resources */ = {isa = PBXBuildFile; fileRef = 3261B6261620709300AC53E1 /* bitmapfont.hiero */; };
+		3261B62E1620709300AC53E1 /* bitmapfont.png in Resources */ = {isa = PBXBuildFile; fileRef = 3261B6271620709300AC53E1 /* bitmapfont.png */; };
+		3261B62F1620709300AC53E1 /* blues.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3261B6281620709300AC53E1 /* blues.mp3 */; };
+		3261B6301620709300AC53E1 /* spider.png in Resources */ = {isa = PBXBuildFile; fileRef = 3261B6291620709300AC53E1 /* spider.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -395,6 +402,13 @@
 		3261B61016206B4400AC53E1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		3261B62016206BA800AC53E1 /* GameLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameLayer.h; sourceTree = "<group>"; };
 		3261B62116206BA800AC53E1 /* GameLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameLayer.m; sourceTree = "<group>"; };
+		3261B6231620709200AC53E1 /* alien-sfx.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "alien-sfx.caf"; path = "Resources/alien-sfx.caf"; sourceTree = "<group>"; };
+		3261B6241620709300AC53E1 /* alien.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = alien.png; path = Resources/alien.png; sourceTree = "<group>"; };
+		3261B6251620709300AC53E1 /* bitmapfont.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = bitmapfont.fnt; path = Resources/bitmapfont.fnt; sourceTree = "<group>"; };
+		3261B6261620709300AC53E1 /* bitmapfont.hiero */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = bitmapfont.hiero; path = Resources/bitmapfont.hiero; sourceTree = "<group>"; };
+		3261B6271620709300AC53E1 /* bitmapfont.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bitmapfont.png; path = Resources/bitmapfont.png; sourceTree = "<group>"; };
+		3261B6281620709300AC53E1 /* blues.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = blues.mp3; path = Resources/blues.mp3; sourceTree = "<group>"; };
+		3261B6291620709300AC53E1 /* spider.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = spider.png; path = Resources/spider.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -467,6 +481,10 @@
 		3261B49816206B4200AC53E1 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				3261B632162070B100AC53E1 /* font */,
+				3261B631162070A200AC53E1 /* audio */,
+				3261B6241620709300AC53E1 /* alien.png */,
+				3261B6291620709300AC53E1 /* spider.png */,
 				3261B49916206B4200AC53E1 /* Default.png */,
 				3261B49B16206B4200AC53E1 /* Default-Landscape~ipad.png */,
 				3261B49D16206B4200AC53E1 /* fps_images.png */,
@@ -827,6 +845,25 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		3261B631162070A200AC53E1 /* audio */ = {
+			isa = PBXGroup;
+			children = (
+				3261B6231620709200AC53E1 /* alien-sfx.caf */,
+				3261B6281620709300AC53E1 /* blues.mp3 */,
+			);
+			name = audio;
+			sourceTree = "<group>";
+		};
+		3261B632162070B100AC53E1 /* font */ = {
+			isa = PBXGroup;
+			children = (
+				3261B6251620709300AC53E1 /* bitmapfont.fnt */,
+				3261B6261620709300AC53E1 /* bitmapfont.hiero */,
+				3261B6271620709300AC53E1 /* bitmapfont.png */,
+			);
+			name = font;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -890,6 +927,13 @@
 				3261B4AE16206B4200AC53E1 /* Icon@2x.png in Resources */,
 				3261B4B116206B4200AC53E1 /* iTunesArtwork in Resources */,
 				3261B5EF16206B4400AC53E1 /* ChangeLog in Resources */,
+				3261B62A1620709300AC53E1 /* alien-sfx.caf in Resources */,
+				3261B62B1620709300AC53E1 /* alien.png in Resources */,
+				3261B62C1620709300AC53E1 /* bitmapfont.fnt in Resources */,
+				3261B62D1620709300AC53E1 /* bitmapfont.hiero in Resources */,
+				3261B62E1620709300AC53E1 /* bitmapfont.png in Resources */,
+				3261B62F1620709300AC53E1 /* blues.mp3 in Resources */,
+				3261B6301620709300AC53E1 /* spider.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
