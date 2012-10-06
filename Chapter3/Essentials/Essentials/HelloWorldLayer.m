@@ -10,6 +10,12 @@
 #import "HelloWorldLayer.h"
 #import "MenuLayer.h"
 
+@interface HelloWorldLayer (PrivateMethods)
+- (void) onCallFunc;
+- (void) onCallFuncN:(id)sender;
+- (void) onCallFuncND:(id)sender data:(void *)data;
+@end
+
 @implementation HelloWorldLayer
 
 + (CCScene *) scene
@@ -48,7 +54,7 @@
     CCSprite *background = [CCSprite spriteWithFile:@"Default.png"];
     background.position = CGPointMake(size.width / 2.0, size.height / 2.0);
     background.scaleX = 3;
-    background.scaleY = 30;
+    // background.scaleY = 30;
     [self addChild:background];
     
     // text label
@@ -61,6 +67,41 @@
     CCLabelTTF *touchLabel = [CCLabelTTF labelWithString:@"Touch the screen" fontName:@"AppleGothic" fontSize:32];
     touchLabel.position = CGPointMake(size.width / 2.0, size.height / 2.0 - 60);
     [self addChild:touchLabel];
+    
+    CCMoveTo *moveTo1 = [CCMoveTo actionWithDuration:3 position:ccp(size.width/2+50, size.height/2)];
+    CCEaseInOut *ease1 = [CCEaseInOut actionWithAction:moveTo1 rate:4];
+    
+    CCCallFunc *func = [CCCallFunc actionWithTarget:self selector:@selector(onCallFunc)];
+    CCCallFuncN *funcN = [CCCallFuncN actionWithTarget:self selector:@selector(onCallFuncN:)];
+    CCCallFuncND *funcND = [CCCallFuncND actionWithTarget:self selector:@selector(onCallFuncND:data:) data:(void *)self];
+    
+    CCRotateBy *rotateBy = [CCRotateBy actionWithDuration:2 angle:360];
+    CCRepeat *repeat = [CCRepeat actionWithAction:rotateBy times:2];    
+    // CCRepeatForever can not be passed to CCSequence
+    // CCRepeatForever *repeat = [CCRepeatForever actionWithAction:rotateBy];
+
+    CCMoveTo *moveTo2 = [CCMoveTo actionWithDuration:3 position:ccp(size.width/2, size.height/2-60)];
+    CCEaseInOut *ease2 = [CCEaseInOut actionWithAction:moveTo2 rate:4];
+
+    CCSequence *seq = [CCSequence actions:ease1, func, funcN, funcND, repeat, ease2, nil];
+
+    [touchLabel runAction:seq];
+}
+
+#pragma mark Private Methods
+- (void) onCallFunc
+{
+    CCLOG(@"%@, %@", NSStringFromSelector(_cmd), self);
+}
+
+- (void) onCallFuncN:(id)sender
+{
+    CCLOG(@"%@, %@, %@", NSStringFromSelector(_cmd), self, sender);
+}
+
+- (void)onCallFuncND:(id)sender data:(void *)data
+{
+    CCLOG(@"%@, %@, %@", NSStringFromSelector(_cmd), self, data);
 }
 
 #pragma mark Touch Delegate Methods

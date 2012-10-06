@@ -75,11 +75,10 @@
 
 - (void) menuItem3Touched:(id)sender
 {
-    
+    // nothing to do
 }
 
 #pragma mark Private Methods
-
 - (void) goBack
 {
     CCNode *node = [self getChildByTag:100];
